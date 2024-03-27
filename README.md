@@ -2,7 +2,11 @@
 
 This is a React Vite project for a Cooking Catalog App, developed as a capstone project. Users can browse, create, and save recipes.
 
-![Cooking Catalog Logo](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot.png)
+Here are some screenshots of the Cooking Catalog App:
+
+1. ![Screenshot 1](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot.png)
+2. ![Screenshot 2](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot2.png)
+3. ![Screenshot 3](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot3.png)
 
 ## Frontend Source Code Structure
 
@@ -50,6 +54,7 @@ Access the backend source code on [GitHub](https://github.com/ArivazhaganPandiya
 ## Deployed Application
 
 Access the deployed application on [Netlify](https://cooking-catalog.netlify.app/).
+
 
 ## Capstone Project
 
