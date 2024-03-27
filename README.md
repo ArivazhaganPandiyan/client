@@ -2,6 +2,8 @@
 
 This is a React Vite project for a Cooking Catalog App, developed as a capstone project. Users can browse, create, and save recipes.
 
+![Cooking Catalog Logo](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot.png)
+
 ## Frontend Source Code Structure
 
 The frontend source code consists of several components and pages:
