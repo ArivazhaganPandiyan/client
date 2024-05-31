@@ -9,14 +9,15 @@ export const CreateRecipe = () => {
   const [cookies, _] = useCookies(["access_token"]);
   const [recipe, setRecipe] = useState({
     name: "",
-    creator : "",
-    ingredients: [],
+    creator: "",
+    ingredients: [""],
     instructions: "",
     imageUrl: "",
     cookingTime: 0,
     userOwner: userID,
   });
 
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -36,8 +37,26 @@ export const CreateRecipe = () => {
     setRecipe({ ...recipe, ingredients });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!recipe.name) newErrors.name = "Recipe name is required";
+    if (!recipe.creator) newErrors.creator = "Creator name is required";
+    if (!recipe.instructions) newErrors.instructions = "Instructions are required";
+    if (!recipe.imageUrl) newErrors.imageUrl = "Image URL is required";
+    if (recipe.cookingTime <= 0) newErrors.cookingTime = "Cooking time must be a positive number";
+    if (recipe.ingredients.length === 0 || recipe.ingredients.includes("")) {
+      newErrors.ingredients = "At least one ingredient is required";
+    }
+    return newErrors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     try {
       await axios.post(
         "https://server-578r.onrender.com/recipes",
@@ -54,12 +73,15 @@ export const CreateRecipe = () => {
     }
   };
 
+  if (!userID) {
+    return <div className="login-text"><b>You need to log in to create a recipe.</b></div>;
+  }
+
   return (
-    
     <div className="create-recipe">
       <h2>Create Recipe</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Recipe Name</label>
+        <label htmlFor="name">Recipe Name<span className="required">*</span></label>
         <input
           type="text"
           id="name"
@@ -67,7 +89,9 @@ export const CreateRecipe = () => {
           value={recipe.name}
           onChange={handleChange}
         />
-        <label htmlFor="name">Creater Name</label>
+        {errors.name && <span className="error">{errors.name}</span>}
+        
+        <label htmlFor="creator">Creator Name<span className="required">*</span></label>
         <input
           type="text"
           id="creator"
@@ -75,8 +99,9 @@ export const CreateRecipe = () => {
           value={recipe.creator}
           onChange={handleChange}
         />
+        {errors.creator && <span className="error">{errors.creator}</span>}
         
-        <label htmlFor="ingredients">Ingredients</label>
+        <label htmlFor="ingredients">Ingredients<span className="required">*</span></label>
         {recipe.ingredients.map((ingredient, index) => (
           <input
             key={index}
@@ -86,17 +111,21 @@ export const CreateRecipe = () => {
             onChange={(event) => handleIngredientChange(event, index)}
           />
         ))}
+        {errors.ingredients && <span className="error">{errors.ingredients}</span>}
         <button className="recipe-btn" type="button" onClick={handleAddIngredient}>
           Add Ingredient
         </button>
-        <label htmlFor="instructions">Instructions</label>
+        
+        <label htmlFor="instructions">Instructions<span className="required">*</span></label>
         <textarea
           id="instructions"
           name="instructions"
           value={recipe.instructions}
           onChange={handleChange}
         ></textarea>
-        <label htmlFor="imageUrl">Image URL</label>
+        {errors.instructions && <span className="error">{errors.instructions}</span>}
+        
+        <label htmlFor="imageUrl">Image URL<span className="required">*</span></label>
         <input
           type="text"
           id="imageUrl"
@@ -104,7 +133,9 @@ export const CreateRecipe = () => {
           value={recipe.imageUrl}
           onChange={handleChange}
         />
-        <label htmlFor="cookingTime">Cooking Time (minutes)</label>
+        {errors.imageUrl && <span className="error">{errors.imageUrl}</span>}
+        
+        <label htmlFor="cookingTime">Cooking Time (minutes)<span className="required">*</span></label>
         <input
           type="number"
           id="cookingTime"
@@ -112,6 +143,8 @@ export const CreateRecipe = () => {
           value={recipe.cookingTime}
           onChange={handleChange}
         />
+        {errors.cookingTime && <span className="error">{errors.cookingTime}</span>}
+        
         <button className="recipe-btn" type="submit">Create Recipe</button>
       </form>
     </div>
