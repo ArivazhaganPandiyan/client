@@ -4,9 +4,9 @@ This is a React Vite project for a Cooking Catalog App, developed as a capstone 
 
 Here are some screenshots of the Cooking Catalog App:
 
-1. ![Screenshot 1](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot.png)
-2. ![Screenshot 2](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot2.png)
-3. ![Screenshot 3](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot3.png)
+1. ![Screenshot 1](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot%20(158).png)
+2. ![Screenshot 2](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot%20(159).png)
+3. ![Screenshot 3](https://github.com/ArivazhaganPandiyan/client/blob/main/src/images/Screenshot%20(160).png)
 
 ## Frontend Source Code Structure
 
@@ -38,6 +38,8 @@ The frontend source code consists of several components and pages:
 - Upon running the application, users can navigate to different pages using the navigation bar.
 - They can create new recipes, browse existing recipes, and save their favorite recipes.
 - Users can also authenticate themselves by logging in or registering.
+- only registered user can create recipe and saved the recipes which is created by other users by login to their account .
+- anyone visiting the website without login can see the recipe list but can't create or saved a recipe 
 
 ## Backend Integration
 
