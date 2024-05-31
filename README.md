@@ -55,7 +55,7 @@ Access the backend source code on [GitHub](https://github.com/ArivazhaganPandiya
 
 ## Deployed Application
 
-Access the deployed application on [Netlify](https://cooking-catalog.netlify.app/).
+Access the deployed application on [Netlify](https://cooking-catalog-app.netlify.app/).
 
 
 ## Capstone Project
